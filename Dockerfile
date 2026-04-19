@@ -1,4 +1,4 @@
- FROM python:3.11-slim
+FROM python:3.11-slim
     
     ENV SEARXNG_VERSION=latest
     
@@ -14,9 +14,14 @@
     RUN pip install --no-cache-dir -r requirements.txt -r requirements-server.txt
     
     COPY searx/ ./searx/
-    COPY searxng.data/ ./searxng.data/
-    COPY searxng.version/ ./searxng.version/
-    COPY manage.py setup.py ./
+    COPY searxng_extra/ ./searxng_extra/
+    COPY manage setup.py ./
+    COPY client/ ./client/
+    COPY utils/ ./utils/
+    COPY tests/ ./tests/
+    COPY docs/ ./docs/
+    COPY container/ ./container/
+    COPY Makefile babel.cfg pyrightconfig.json mise.toml package.json ./
     
     ENV SEARXNG_BASE_URL="http://localhost:8888/"
     ENV SEARXNG_SECRET_KEY="$(openssl rand -hex 32)"
