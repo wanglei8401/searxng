@@ -31,4 +31,3 @@
               tags: ghcr.io/wanglei8401/searxng:latest
               cache-from: type=gha
               cache-to: type=gha,mode=max
-    ```
